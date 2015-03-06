@@ -1,5 +1,6 @@
 	var geos = [
-		{ name: "Western Cape", geoid: "province-WC", active: true },
+		{ name: "South Africa", geoid: "country-ZA", active: true},
+		{ name: "Western Cape", geoid: "province-WC" },
 		{ name: "Northern Cape", geoid: "province-NC" },
 		{ name: "Gauteng", geoid: "province-GT" },
 		{ name: "North West", geoid: "province-NW" },
@@ -11,9 +12,9 @@
 	];
 
 	var charts = [
-		{ name: "School attendance", chartid: "children-school-school_attendance_distribution", charttype: "pie" },
+		{ name: "Children 5 to 17 by school attendance", chartid: "children-school-school_attendance_distribution", charttype: "pie" },
 		{ name: "Children under 18 by gender", chartid: "children-demographics-gender_distribution", charttype: "pie" },
-		{ name: "Parents", chartid: "children-demographics-child_adult_distribution", charttype: "pie" },
+		{ name: "Children 14 and under by biological parental survival", chartid: "children-demographics-child_adult_distribution", charttype: "pie" },
 		{ name: "Children 5 to 17 by school attendance", chartid: "children-school-school_attendance_distribution", charttype: "pie" },
 		{ name: "17-year-olds by highest level of education", chartid: "children-school-education17_distribution", charttype: "column", scaled: true },
 		{ name: "Employment of 15- to 17-year-olds", chartid: "child_households-type_of_dwelling_distribution", charttype: "pie" },
@@ -63,9 +64,9 @@
 			final_html.push(pie_template(data));
 			
 		});
-		$("#charts").html(final_html.join());
+		$("#charts").html(final_html.join("\n"));
 	}
 
 $(function() {
-	load_geo("province-WC");
+	load_geo("country-ZA");
 });
