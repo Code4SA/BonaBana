@@ -4,39 +4,26 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>WaziChildren</title>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-<!-- 	<h1>Child Population</h1>
-	<iframe id="cr-embed-municipality-CPT-children-demographics-gender_distribution" class="census-reporter-embed" src="http://embed.wazimap.co.za/static/iframe.html?geoID=province-WC&amp;chartDataID=children-demographics-gender_distribution&amp;chartType=pie&amp;chartHeight=200&amp;chartQualifier=Universe%3A+Children+under+18&amp;chartTitle=Children+under+18+by+gender&amp;initialSort=&amp;statType=percentage" frameborder="0" width="100%" height="300" style="margin: 1em; max-width: 300px;"></iframe>
-<script src="http://embed.wazimap.co.za/static/js/embed.chart.make.js"></script>
+	<div class="container">
 
-<iframe id="cr-embed-province-WC-children-demographics-child_adult_distribution" class="census-reporter-embed" src="http://embed.wazimap.co.za/static/iframe.html?geoID=province-WC&chartDataID=children-demographics-child_adult_distribution&chartType=pie&chartHeight=200&chartQualifier=&chartTitle=Population+by+age+category&initialSort=&statType=percentage" frameborder="0" width="100%" height="300" style="margin: 1em; max-width: 300px;"></iframe>
-<script src="http://embed.wazimap.co.za/static/js/embed.chart.make.js"></script>
+		<div id="geos"></div>
+		<div id="charts"></div>
 
-<h1>Parents</h1>
-<iframe id="cr-embed-province-WC-children-demographics-parental_survival_distribution" class="census-reporter-embed" src="http://embed.wazimap.co.za/static/iframe.html?geoID=province-WC&chartDataID=children-demographics-parental_survival_distribution&chartType=pie&chartHeight=200&chartQualifier=Universe%3A+Children+14+and+under&chartTitle=Children+14+and+under+by+biological+parental+survival&initialSort=-value&statType=percentage" frameborder="0" width="100%" height="300" style="margin: 1em; max-width: 300px;"></iframe>
-<script src="http://embed.wazimap.co.za/static/js/embed.chart.make.js"></script>
-
-<h1>School Attendance</h1>
-<iframe id="cr-embed-province-WC-children-school-school_attendance_distribution" class="census-reporter-embed" src="http://embed.wazimap.co.za/static/iframe.html?geoID=province-WC&chartDataID=children-school-school_attendance_distribution&chartType=pie&chartHeight=200&chartQualifier=Universe%3A+Children+5+to+17&chartTitle=Children+5+to+17+by+school+attendance&initialSort=-value&statType=percentage" frameborder="0" width="100%" height="300" style="margin: 1em; max-width: 300px;"></iframe>
-<script src="http://embed.wazimap.co.za/static/js/embed.chart.make.js"></script> -->
-
-<div id="geos"></div>
-<div id="charts"></div>
+	</div>
 
 <script type="text/x-handlebars-template" id="geography_select_template">
-	Geographies
-	<ul>
+	<ul class="nav nav-pills">
 	{{#each geos}}
-	<li><a href="#" class="geo" data-geoid="{{this.geoid}}" data-title="{{this.name}}">{{this.name}}</a></li>
+		<li><a href="#" class="geo" data-geoid="{{this.geoid}}" data-title="{{this.name}}">{{this.name}}</a></li>
 	{{/each}}
 	</ul>
 </script>
 
 <script type="text/x-handlebars-template" id="wazichildren_pie_graph">
-	<h1>{{ title }}</h1>
-	<iframe id="{{geoid}}_{{chartid}}" class="census-reporter-embed" src="http://embed.wazimap.co.za/static/iframe.html?geoID={{geoid}}&amp;chartDataID={{chartid}}&amp;chartType={{charttype}}&amp;chartHeight=200&amp;chartQualifier=Universe%3A+Children+5+to+17&amp;chartTitle=&initialSort=-&statType={{#if scaled}}scaled-{{/if}}percentage" frameborder="0" width="100%" height="300" style="margin: 1em; max-width: 720px;"></iframe>
+	<iframe id="{{geoid}}_{{chartid}}" class="census-reporter-embed" src="http://embed.wazimap.co.za/static/iframe.html?geoID={{geoid}}&amp;chartDataID={{chartid}}&amp;chartType={{charttype}}&amp;chartHeight=200&amp;chartQualifier=Universe%3A+Children+5+to+17&amp;chartTitle={{title}}&initialSort=-&statType={{#if scaled}}scaled-{{/if}}percentage" frameborder="0" width="100%" height="310" style="margin: 1em; max-width: 720px;"></iframe>
 	
 </script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -47,14 +34,25 @@
 		{ name: "Western Cape", geoid: "province-WC" },
 		{ name: "Northern Cape", geoid: "province-NC" },
 		{ name: "Gauteng", geoid: "province-GT" },
+		{ name: "North West", geoid: "province-NW" },
+		{ name: "Limpopo", geoid: "province-LIM" },
+		{ name: "Mpumalanga", geoid: "province-MP" },
+		{ name: "KwaZulu-Natal", geoid: "province-KZN" },
+		{ name: "Eastern Cape", geoid: "province-EC" },
+		{ name: "Free State", geoid: "province-FS" },
 	];
 
 	var charts = [
-		{ name: "School Attendance", chartid: "children-school-school_attendance_distribution", charttype: "pie" },
-		{ name: "Gender Distribution", chartid: "children-demographics-gender_distribution", charttype: "pie" },
+		{ name: "School attendance", chartid: "children-school-school_attendance_distribution", charttype: "pie" },
+		{ name: "Children under 18 by gender", chartid: "children-demographics-gender_distribution", charttype: "pie" },
 		{ name: "Parents", chartid: "children-demographics-child_adult_distribution", charttype: "pie" },
-		{ name: "School Attendance", chartid: "children-school-school_attendance_distribution", charttype: "pie" },
+		{ name: "Children 5 to 17 by school attendance", chartid: "children-school-school_attendance_distribution", charttype: "pie" },
 		{ name: "17-year-olds by highest level of education", chartid: "children-school-education17_distribution", charttype: "column", scaled: true },
+		{ name: "Employment of 15- to 17-year-olds", chartid: "child_households-type_of_dwelling_distribution", charttype: "pie" },
+		{ name: "Households headed by children under 18 years old", chartid: "children-employment-employment_distribution", charttype: "pie" },
+		{ name: "Head of child-headed household by gender", chartid: "child_households-head_of_household-gender_distribution", charttype: "pie" },
+		{ name: "Annual child-headed household income", chartid: "child_households-annual_income_distribution", charttype: "pie" },
+		{ name: "Size of household by age of household head", chartid: "child_households-household_size_distribution", charttype: "grouped_column", scaled: true },
 	];
 
 	var test = {
@@ -75,7 +73,7 @@
 		var sender = this;
 		charts.forEach(function(chart) {
 			var data = {
-				title: $(sender).attr("data-title") + ": " + chart.name,
+				title: chart.name,
 				geoid: $(sender).attr("data-geoid"),
 				chartid: chart.chartid,
 				charttype: chart.charttype,
@@ -88,8 +86,5 @@
 		$("#charts").html(final_html.join());
 	});
 </script>
-
-
-
 </body>
 </html>
