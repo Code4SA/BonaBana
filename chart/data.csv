@@ -1,10 +1,10 @@
-Province	Articles Per Hundred Thousand Children	Stories About Children	Media Coverage	Number of Children	Children on the Ground
-Gauteng	47,207139729336	1616	47%	3423211	19%
-Western Cape	31,1597223220317	542	16%	1739425	10%
-Northern Cape	27,5101824192893	113	3%	410757	2%
-Free State	13,950307536103	133	4%	953384	5%
-North West	13,5874981998599	167	5%	1229071	7%
-Mpumalanga	12,603891368974	191	6%	1515405	8%
-KwaZulu-Natal	9,62916834313605	381	11%	3956728	22%
-Limpopo	7,30896200557917	162	5%	2216457	12%
-Eastern Cape	5,48878173059001	144	4%	2623533	15%
+Province,Number of Children,Media Articles About Children,Percentage of Children,Percentage of Media Coverage,Media Articles Per Hundred Thousand Children
+Gauteng,3423211,1616,19%,47%,47
+Western Cape,1739425,542,10%,16%,31
+Northern Cape,410757,113,2%,3%,28
+Free State,953384,133,5%,4%,14
+North West,1229071,167,7%,5%,14
+Mpumalanga,1515405,191,8%,6%,13
+KwaZulu-Natal,3956728,381,22%,11%,10
+Limpopo,2216457,162,12%,5%,7
+Eastern Cape,2623533,144,15%,4%,5
